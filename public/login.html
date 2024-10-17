@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <style>
+        body, html {
+           font-size: 15px;
+           height: 100%;
+           margin: 0;
+           display: flex; /* Usar flex para o body */
+           flex-direction: column; /* Direção da coluna */
+           /*background-size: cover; Ajusta a imagem para cobrir toda a tela */
+           /*background-position: center;  Centraliza a imagem */
+        }
+
+        #imagem_background {
+           background-image: url('imagens/Mercado.jpeg');
+           background-repeat: no-repeat; /* Evita que a imagem se repita */
+           background-position: top left; /* Posiciona no canto superior direito */
+           background-size: 72% 100%; /* Define o tamanho da imagem */
+           height: 100%;
+           width: 100%; /* Garante que ocupa toda a largura */
+           position: absolute; /* Para ficar em segundo plano */
+           /* z-index: -1; Coloca a imagem de fundo atrás */
+        }
+
+        #fundo_login {
+            display: flex; /* Usando flex para centralizar o conteúdo */
+            align-items: center; /* Centraliza verticalmente */
+            justify-content: flex-start; /* Alinha à esquerda */
+            height: 100%; /* Garante que ocupa toda a altura da tela */
+            width: 100%; /* Garante que ocupa toda a largura */
+            padding: 20px; /* Adiciona um pouco de padding */
+            background-color: orange;
+        }
+
+        #div_usuarios {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centraliza os itens dentro da div */
+            width: 300px; /* Define uma largura fixa para a div de login */
+            background-color: rgb(248, 203, 0, 0.8); /* Fundo amarelo com 80% de opacidade */
+            padding: 40px; /* Espaçamento interno */
+            border-radius: 30px; /* Bordas arredondadas */
+            /*z-index: 1; */
+        }
+
+        #div_da_div_usuarios {
+            display: flex;
+            height: 100%;
+            width: 95%;
+            align-items: center; /* Centraliza verticalmente */
+            justify-content: flex-end; /* Alinha a div à direita */
+        }
+
+        input {
+            margin: 5px 0; /* Espaçamento entre os inputs */
+            width: 70%; /* Faz os inputs ocuparem toda a largura da div */
+            padding: 10px; /* Espaçamento interno nos inputs */
+            border: 1px solid black; /* Define a borda preta com 1 pixels de espessura */
+            border-radius: 10px; /* Bordas arredondadas para os inputs */
+            background-color: white; /* Fundo branco nos inputs */
+        }
+
+        button {
+            padding: 10px; /* Espaçamento interno no botão */
+            border: none; /* Remove a borda padrão */
+            border-radius: 10px; /* Bordas arredondadas para o botão */
+            background-color: #007BFF; /* Cor de fundo do botão */
+            color: white; /* Cor do texto do botão */
+            cursor: pointer; /* Muda o cursor ao passar sobre o botão */
+        }
+
+        button:hover {
+            background-color: #0056b3; /* Cor do botão ao passar o mouse */
+        }
+
+    
+    </style>
+</head>
+<body>
+
+<div id="imagem_background">
+
+</div>
+
+ <div id="fundo_login">
+   <div id="div_da_div_usuarios">
+     <div id="div_usuarios">
+       
+        <p>Login:</p>
+       <input type="email" id="email" name="email" placeholder="Digite o usuário:" required>
+       
+       <p>Senha:</p>
+       <input type="password" id="senha" name="password" placeholder="Digite a senha:" required>
+       
+       <button type="submit" id="concluir_login">Enviar</button>
+     
+    </div>
+   </div>
+ </div>
+
+<script>
+    
+</script>
+
+
+</body>
+</html>
