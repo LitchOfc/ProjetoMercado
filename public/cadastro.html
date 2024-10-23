@@ -27,7 +27,7 @@
            height: 100%;
            width: 100%; /* Garante que ocupa toda a largura */
            position: absolute; /* Para ficar em segundo plano */
-           /* z-index: -1; Coloca a imagem de fundo atrás */
+           z-index: -1; /* Coloca a imagem de fundo para trás */
         }
 
         #fundo_cadastrado {
@@ -57,6 +57,8 @@
             width: 95%;
             align-items: center; /* Centraliza verticalmente */
             justify-content: flex-end; /* Alinha a div à direita */
+            position: relative;
+            z-index: 1;
         }
 
         input {
@@ -83,13 +85,45 @@
 
     
     </style>
+
+<script>
+
+
+    function enviar(){
+    
+        const info = {
+        "nome": document.getElementById("nome").value,
+        "email": document.getElementById("email").value,
+        "cpf": document.getElementById("cpf").value,
+        "date": document.getElementById("date").value,
+        "celular": document.getElementById("celular").value,
+        "senha": document.getElementById("senha").value
+        } // a última propriedade não possui vírgula!
+    
+    const config = {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(info)
+    }
+    
+        fetch("/inserircadastrados", config)
+        .then(response => response.json())
+        .then(resposta =>{
+            alert(resposta);
+        })     
+    }
+    
+</script>
+
+
+
 </head>
 <body>
 
 <div id="imagem_background">
 
 </div>
-<form action="/cadastrados" method="POST">
+
  <div id="fundo_cadastro">
    <div id="div_da_div_cadastrados">
      <div id="div_cadastrados">
@@ -106,13 +140,32 @@
        <input type="tel" id="celular" name="celular" placeholder="Digite seu número:" required>
        <p>Senha:</p>
        <input type="password" id="senha" name="password" placeholder="Digite a senha:" required>
-       <p>Confirmar Senha:</p>
-       <input type="password" id="confirmsenha" name="confirmsenha" placeholder="Digite a senha novamente:" required>
-       <button type="submit" id="concluir_login">Enviar</button>
+       <button type="submit" id="concluir" onclick="enviar()">Enviar</button>
      </div>
    </div>
  </div>
-</form>
+
+ <div id="resultado"></div>
+
+ <script>
+     fetch("/consultar")
+     .then(response => response.json())
+     .then(resposta => {
+ 
+ for(var i = 0; i <= resposta.length; i++ ){
+ 
+         var conteudo = ""
+         conteudo += `<p>${resposta[i].NOME}</p>`
+         conteudo += `<p>${resposta[i].EMAIL}</p>`
+         conteudo += `<p>${resposta[i].CPF}</p>`
+         conteudo += `<p>${resposta[i].DATA_NASCIMENTO}</p>`
+         conteudo += `<p>${resposta[i].CELULAR}</p>`
+         conteudo += `<p>${resposta[i].SENHA}</p> <hr>`
+ 
+         $("#resultado").append(conteudo);
+    }
+});
+ </script>
 
 <script>
     
