@@ -27,7 +27,7 @@
            height: 100%;
            width: 100%; /* Garante que ocupa toda a largura */
            position: absolute; /* Para ficar em segundo plano */
-           /* z-index: -1; Coloca a imagem de fundo atrás */
+           z-index: -1; /* Coloca a imagem de fundo atrás */
         }
 
         #fundo_login {
@@ -48,7 +48,8 @@
             background-color: rgb(248, 203, 0, 0.8); /* Fundo amarelo com 80% de opacidade */
             padding: 40px; /* Espaçamento interno */
             border-radius: 30px; /* Bordas arredondadas */
-            /*z-index: 1; */
+            position: relative;
+            z-index: 1;
         }
 
         #div_da_div_usuarios {
@@ -83,6 +84,34 @@
 
     
     </style>
+
+<script>
+   
+
+
+   function enviar(){
+
+        const info = {
+            email: document.getElementById("email").value,
+            senha: document.getElementById("senha").value
+        };
+
+        fetch("/logados", {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(info) // OBJETO DA LINHA 94 SENDO PASSADO PARA /LOGADOS.
+        })
+        .then( response => response.text() )
+        .then( resposta => {
+
+            window.location.href = resposta;
+
+        });
+    }
+
+</script>
+
+
 </head>
 <body>
 
@@ -94,22 +123,17 @@
    <div id="div_da_div_usuarios">
      <div id="div_usuarios">
        
-        <p>Login:</p>
+       <p>Login:</p>
        <input type="email" id="email" name="email" placeholder="Digite o usuário:" required>
        
        <p>Senha:</p>
        <input type="password" id="senha" name="password" placeholder="Digite a senha:" required>
        
-       <button type="submit" id="concluir_login">Enviar</button>
+       <button onclick="enviar()" type="submit" id="concluir_login">Enviar</button>
      
     </div>
    </div>
  </div>
-
-<script>
-    
-</script>
-
 
 </body>
 </html>
